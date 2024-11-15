@@ -2,7 +2,7 @@ training_set:
   object_type: pipeline
   object_uuid: data_preparation
   outdated_after:
-    seconds: 700
+    seconds: 600
   project: unit_3_observability
   repo_path: /home/src/mlops/unit_3_observability
   settings:

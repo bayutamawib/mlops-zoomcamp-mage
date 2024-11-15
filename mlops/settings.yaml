@@ -1,4 +1,5 @@
 projects:
+  sublime_cedar: {}
   unit_0_setup: {}
   unit_1_data_preparation: {}
   unit_2_training: {}

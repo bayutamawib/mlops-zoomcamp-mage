@@ -1,0 +1,19 @@
+features:
+  add_new_block_v2: true
+  command_center: true
+  compute_management: false
+  custom_design: true
+  data_integration_in_batch_pipeline: true
+  dbt_v2: true
+  global_hooks: true
+  interactions: true
+  display_local_timezone: true
+  notebook_block_output_split_view: true
+  operation_history: true
+  polars: true
+help_improve_mage:
+pipelines:
+  settings:
+    triggers:
+      save_in_code_automatically: true
+openai_api_key: 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

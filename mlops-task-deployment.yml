@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mlops-task-deployment
+  labels:
+    app: mlops-task
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mlops-task
+  template:
+    metadata:
+      labels:
+        app: mlops-task
+    spec:
+      containers:
+      - name: mlops-container
+        image: gcr.io/mlops-zoomcamp-mage/mlops-zoomcamp-mage:latest
+        command: ["/bin/sh", "-c", "./scripts/start.sh"]
+        resources:
+          requests:
+            memory: "4Gi"
+            cpu: "500m"
+          limits:
+            memory: "12Gi"
+            cpu: "2"
+        env:
+        - name: PYTHONPATH
+          value: "/home/src/mlops"  # Match the path from your Dockerfile
+        - name: OTHER_ENV_VARIABLE
+          value: "value"  # Add any other env variables if needed

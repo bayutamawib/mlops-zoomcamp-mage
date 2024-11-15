@@ -1,0 +1,161 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: unit_2_training/global_data_products/training_set.py
+    global_data_product:
+      uuid: training_set
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: training_set
+  retry_config: null
+  status: failed
+  timeout: null
+  type: global_data_product
+  upstream_blocks: []
+  uuid: training_set
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: unit_1_data_preparation/data_loaders/ingest.py
+    file_source:
+      path: unit_1_data_preparation/data_loaders/ingest.py
+  downstream_blocks:
+  - prepare
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: ingest
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: ingest
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: unit_1_data_preparation/transformers/prepare.py
+    file_source:
+      path: unit_1_data_preparation/transformers/prepare.py
+  downstream_blocks:
+  - build
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: prepare
+  retry_config: null
+  status: failed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - ingest
+  uuid: prepare
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file_path: unit_1_data_preparation/data_exporters/build.py
+    file_source:
+      path: unit_1_data_preparation/data_exporters/build.py
+  downstream_blocks:
+  - hyperparameter_tuning/sklearn
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: build
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - prepare
+  uuid: build
+- all_upstream_blocks_executed: true
+  color: teal
+  configuration:
+    dynamic: true
+    file_source:
+      path: unit_2_training/custom/load_models.py
+  downstream_blocks:
+  - hyperparameter_tuning/sklearn
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: Load models
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks: []
+  uuid: load_models
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: unit_2_training/markdowns/dynamic_block_info.md
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: markdown
+  name: Dynamic block info
+  retry_config: null
+  status: updated
+  timeout: null
+  type: markdown
+  upstream_blocks: []
+  uuid: dynamic_block_info
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file_source:
+      path: unit_2_training/transformers/hyperparameter_tuning/sklearn.py
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: Hyperparameter tuning/sklearn
+  retry_config: null
+  status: failed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - load_models
+  - build
+  uuid: hyperparameter_tuning/sklearn
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-10-29 03:58:51.093322+00:00'
+data_integration: null
+description: Lasso, Linear Regression, LinearSVR, RandomForestRegressor, etc
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: sklearn training
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: sklearn_training
+variables:
+  max_evaluations: 50
+  random_state: 7
+variables_dir: /home/src/mage_data/unit_2_training
+widgets: []
