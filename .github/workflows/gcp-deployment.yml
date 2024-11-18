@@ -1,0 +1,5 @@
+env:
+  GOOGLE_APPLICATION_CREDENTIALS: /github/workspace/service-account.json
+steps:
+  - name: Set up Service Account Key
+    run: echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > /github/workspace/service-account.json
